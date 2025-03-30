@@ -191,6 +191,7 @@ sudo insmod hyperattacker.ko
 You must launch a SEV-SNP VM before running the attacks. Please follow the instructions in **6. Launching a SEV-SNP VM**.
 
 > Note: You don't have to run the instructions in **7. Set up a SEV-SNP VM** again.
+>
 > Note: Re-launch the VM before running the attacks each time.
 
 ### AES Attack
