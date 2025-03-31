@@ -20,7 +20,7 @@ For BIOS settings:
 This artifact is devised on Ubuntu 22.04. We used the following software to create a SEV-SNP VM.
 - KVM in the Linux kernel from the [AMDESE repo](https://github.com/AMDESE/linux/tree/sev-snp-iommu-avic_5.19-rc6_v4) (branch `sev-snp-iommu-avic_5.19-rc6_v4`).
 - QEMU from the [AMDESE repo](https://github.com/AMDESE/qemu) (branch `snp-v3`). 
-- OVMF (OvmfPkgX64) source from the [edk2 repo](https://github.com/tianocore/edk2).
+- OVMF (OvmfPkgX64) source from the [edk2 repo](https://github.com/tianocore/edk2) (commit `8fc06b6e19e3df93cc989b4f85877d8a7783e5bf`).
 
 SEV-SNP VM runs a Linux kernel v5.19 on Ubuntu 20.04 with the following configuration:
 - a single virtual CPU (vCPU), which was pinned to a single core using `taskset`.
@@ -99,6 +99,8 @@ make
 In `DIR`, clone the `edk2` source.
 ```
 git clone https://github.com/tianocore/edk2.git
+cd edk2
+git checkout 8fc06b6e19e3df93cc989b4f85877d8a7783e5bf
 ```
 
 In `DIR/edk2`, set up the environment.
