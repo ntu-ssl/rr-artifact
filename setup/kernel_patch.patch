@@ -1,0 +1,34 @@
+diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
+index b225fa0fe..481e499b6 100644
+--- a/arch/x86/kvm/x86.c
++++ b/arch/x86/kvm/x86.c
+@@ -15,6 +15,7 @@
+  *   Amit Shah    <amit.shah@qumranet.com>
+  *   Ben-Ami Yassour <benami@il.ibm.com>
+  */
++#include "svm/svm.h"
+ 
+ #include <linux/kvm_host.h>
+ #include "irq.h"
+@@ -4448,6 +4449,21 @@ static int kvm_x86_dev_has_attr(struct kvm_device_attr *attr)
+ 	}
+ }
+ 
++u64 kvm_arch_dev_ioctl_get_ncr3(void){
++    u64 ret = 0;
++    struct kvm *kvm;
++    struct kvm_vcpu *vcpu;
++    struct vcpu_svm *svm;
++    list_for_each_entry(kvm, &vm_list, vm_list) {
++        vcpu = kvm_get_vcpu(kvm, 0);
++        svm = to_svm(vcpu);
++        ret = svm->vmcb->control.nested_cr3;
++        break;
++    }
++    return ret;
++}
++EXPORT_SYMBOL(kvm_arch_dev_ioctl_get_ncr3);
++
+ long kvm_arch_dev_ioctl(struct file *filp,
+ 			unsigned int ioctl, unsigned long arg)
+ {

@@ -1,0 +1,2 @@
+cd ../spectre
+./run.sh
