@@ -222,3 +222,7 @@ From `DIR/rr-artifact/scripts/` on the KVM host, test the attack using the follo
 ```
 
 Once complete, the accuracy and throughput will be printed out. 
+
+## Contact
+
+Feel free to contact me if you have any questions: r11922213@csie.ntu.edu.tw
